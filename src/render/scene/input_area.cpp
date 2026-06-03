@@ -124,7 +124,8 @@ void InputArea::dispatchPress(float localX, float localY, std::uint32_t button, 
       m_onPress({.localX = localX, .localY = localY, .button = button, .pressed = true});
     }
   } else {
-    const bool shouldClick = m_pressed && m_pressedButton == button && m_onClick;
+    const bool shouldClick =
+        m_pressed && m_pressedButton == button && m_onClick && containsLocalPoint(localX, localY, false);
     m_pressed = false;
     m_pressedButton = 0;
 
